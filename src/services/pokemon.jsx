@@ -19,17 +19,18 @@ export const fetchPokemon = async () => {
           );
     
           const pokemonData = await fetchedPokemon.json();
-            
+            console.log('DATA', pokemonData);
           if (pokemonData.count > 1) {
             const exactPokemon = pokemonData.results.find(
-              (result) => result.pokemon === fav
+              (results) => results.pokemon === fav
             );
             return exactPokemon;
           }
+          return pokemonData.results[0]
         })
       );
       return pokemonList;
-    };
+};
 
     export const fetchSearchPokemon = (pokemonName) => {
         return fetch( `https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${pokemonName}`)

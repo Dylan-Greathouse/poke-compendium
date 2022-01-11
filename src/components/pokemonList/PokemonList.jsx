@@ -1,13 +1,13 @@
 import Pokemon from "../pokemon/Pokemon";
 
 
-export function PokemonList ({ pokemons }) {
+export function PokemonList ({ pokemon }) {
     return (
         <ul>
-            {pokemons.map((pokemon) => {
+            {pokemon.map((item) => {
                 return (
-                    <li key={pokemon.pokemon}>
-                        <Pokemon pokemons={pokemon} />
+                    <li key={item.pokemon}>
+                        <Pokemon pokemons={item} />
                     </li>
                 )
             })}

@@ -15,13 +15,17 @@ export const Compendium = () => {
   useEffect(() => {
     const getPokemon = async () => {
       const pokemonList = await fetchPokemon();
+      console.log('LIST', pokemonList)
        setPokemons(pokemonList);
-      setLoading(false);
+       setLoading(false);
+  
     };
 
     getPokemon();
+ 
   }, []);
 
+  console.log('POKEMONS', pokemons)
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -37,10 +41,15 @@ export const Compendium = () => {
       });
   };
 
+  const handleNameChange = (e) => {
+    setSearchName(e.target.value)
+  }
+
   useEffect(() => {
     async function getTypes() {
      const pokemonTypes = await fetchTypes();
      setTypes(pokemonTypes);
+     setLoading(false);
    }
 
    getTypes();
@@ -53,7 +62,7 @@ export const Compendium = () => {
             <Controls
                 name={searchName}
                 handleSubmit={handleSubmit}
-                handleNameChange={setSearchName}
+                handleNameChange={handleNameChange}
                 types={types}
                 filterChange={setSelectedType}
                 selectedType={selectedType}

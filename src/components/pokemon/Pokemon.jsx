@@ -10,8 +10,6 @@ export function Pokemon({pokemons}) {
    } = pokemons
    return (
       <div>
-
-        return ( 
             <section className='pokemon'>
             <h3>{pokemon}</h3>
             <p>species: {speciesId}</p>
