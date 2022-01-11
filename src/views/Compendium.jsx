@@ -15,7 +15,6 @@ export const Compendium = () => {
   useEffect(() => {
     const getPokemon = async () => {
       const pokemonList = await fetchPokemon();
-      console.log('LIST', pokemonList)
        setPokemons(pokemonList);
        setLoading(false);
   
@@ -25,20 +24,16 @@ export const Compendium = () => {
  
   }, []);
 
-  console.log('POKEMONS', pokemons)
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    fetchSearchPokemon(searchName)
-      .then((searchedPokemons) => {
-        setPokemons(searchedPokemons)
-     })
-      .catch((error) => {})
-      .finally(() => {
+    const res = await fetchSearchPokemon(searchName)
+        setPokemons(res)
+     
         setLoading(false);
         setSearchName('');
         setSelectedType('');
-      });
+  
   };
 
   const handleNameChange = (e) => {

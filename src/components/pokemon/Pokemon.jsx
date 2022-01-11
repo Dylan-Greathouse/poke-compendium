@@ -3,7 +3,7 @@ import React from 'react'
 export function Pokemon({pokemons}) {
    const {
       pokemon,
-      speciesId,
+      height,
       hp,
       attack
 
@@ -12,7 +12,7 @@ export function Pokemon({pokemons}) {
       <div>
             <section className='pokemon'>
             <h3>{pokemon}</h3>
-            <p>species: {speciesId}</p>
+            <p>height: {height}</p>
         <li>
                
                 <section className='pokemon-stats'>

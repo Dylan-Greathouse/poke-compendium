@@ -19,7 +19,6 @@ export const fetchPokemon = async () => {
           );
     
           const pokemonData = await fetchedPokemon.json();
-            console.log('DATA', pokemonData);
           if (pokemonData.count > 1) {
             const exactPokemon = pokemonData.results.find(
               (results) => results.pokemon === fav
@@ -32,9 +31,11 @@ export const fetchPokemon = async () => {
       return pokemonList;
 };
 
-    export const fetchSearchPokemon = (pokemonName) => {
-        return fetch( `https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${pokemonName}`)
-        .then((data) => data.json())
+    export const fetchSearchPokemon = async (pokemonName) => {
+        const res = await fetch( `https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${pokemonName}`);
+        const pokemonSearch = await res.json();
+        console.log('SEARCH', pokemonSearch)
+        return pokemonSearch.results;
     };
 
 
@@ -42,7 +43,9 @@ export const fetchPokemon = async () => {
     export const fetchTypes = async () => {
         const res = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex/types`);
       
+      
         const pokemonTypes = await res.json();
-        return pokemonTypes;
+
+        return pokemonTypes.map((item) => item.type);
 
     };
