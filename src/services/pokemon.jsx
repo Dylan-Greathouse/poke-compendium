@@ -34,7 +34,6 @@ export const fetchPokemon = async () => {
     export const fetchSearchPokemon = async (pokemonName) => {
         const res = await fetch( `https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${pokemonName}`);
         const pokemonSearch = await res.json();
-        console.log('SEARCH', pokemonSearch)
         return pokemonSearch.results;
     };
 
