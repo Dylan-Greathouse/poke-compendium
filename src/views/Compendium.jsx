@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PokemonList } from '../components/pokemonList/PokemonList';
-import { Controls } from '../components/Controls/Controls.jsx';
+import { Controls } from '../components/controls/controls.jsx';
 import { fetchPokemon, fetchSearchPokemon, fetchTypes } from '../services/pokemon';
 import '../App.css';
 
